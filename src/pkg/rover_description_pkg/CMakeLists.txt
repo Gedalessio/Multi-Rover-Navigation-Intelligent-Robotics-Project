@@ -24,7 +24,7 @@ include_directories(
 ## Install ##
 #############
 install(
-  DIRECTORY urdf meshes
+  DIRECTORY urdf meshes 
   DESTINATION share/${PROJECT_NAME}
 )
 

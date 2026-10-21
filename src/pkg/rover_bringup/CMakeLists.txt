@@ -79,10 +79,55 @@ install(PROGRAMS
 install(PROGRAMS
   scripts/simple_follower.py 
   
+  
   DESTINATION lib/${PROJECT_NAME}
   RENAME simple_follower
  
 )
 
+install(PROGRAMS
+  scripts/follow.py 
+  
+  
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME follow
+ 
+)
+
+install(PROGRAMS
+  scripts/arucoway.py 
+  
+  
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME arucoway
+ 
+)
+
+install(PROGRAMS
+  scripts/rovway.py 
+  
+  
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME rovway
+ 
+)
+
+install(PROGRAMS
+  scripts/waypose.py 
+  
+  
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME waypose
+ 
+)
+
+install(PROGRAMS
+  scripts/remap.py 
+  
+  
+  DESTINATION lib/${PROJECT_NAME}
+  RENAME remap
+ 
+)
 
 ament_package()

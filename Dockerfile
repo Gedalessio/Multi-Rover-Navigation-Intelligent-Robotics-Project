@@ -75,7 +75,9 @@ RUN apt-get update && apt install ros-humble-tf-transformations -y
 #RUN apt-get update && apt-get install -y ros-humble-ros-gzharmonic -y
 
 #RUN export GZ_SIM_RESOURCE_PATH=~/ros2_ws/src/ros2_iiwa/iiwa_description/gazebo/models
-ENV GZ_SIM_RESOURCE_PATH=~/ros2_ws/src/ros2_iiwa/iiwa_description/gazebo/models
+
+
+
 
 #Environment variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -101,6 +103,9 @@ RUN sudo adduser user iio
 RUN sudo adduser user plugdev
 
 USER user
+
+ENV GZ_SIM_RESOURCE_PATH=/home/user/ros2_ws/src/pkg/rover_gazebo/models
+
 
 #ROS2 workspace creation and compilation
 RUN mkdir -p ${HOME}/ros2_ws/src

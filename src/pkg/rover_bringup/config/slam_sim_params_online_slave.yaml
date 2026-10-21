@@ -25,7 +25,8 @@ slave/slam_toolbox:
     #map_file_name: test_steve
     # map_start_pose: [0.0, 0.0, 0.0]
     #map_start_at_dock: true
-    #map_file_name: /home/rover/rover_workspace/office_map
+    map_file_name: /home/user/ros2_ws/install/rover_bringup/share/rover_bringup/maps/my_map.yaml
+
     #map_start_pose: [0.0, 0.0, 0.0]
 
     debug_logging: false

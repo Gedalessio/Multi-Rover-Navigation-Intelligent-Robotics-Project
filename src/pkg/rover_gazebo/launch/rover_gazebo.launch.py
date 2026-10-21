@@ -21,6 +21,7 @@ def generate_launch_description():
     # frame_prefix = LaunchConfiguration("frame_prefix")
     tf_prefix = LaunchConfiguration("tf_prefix")   
     x=LaunchConfiguration('x')
+    y=LaunchConfiguration('y')
     namespace = LaunchConfiguration('namespace') 
 
     declared_arguments = []
@@ -102,6 +103,7 @@ def generate_launch_description():
             "-name", namespace,
             "-allow_renaming", "true",
             "-z", "0.1",
+            "-y",y,
             "-x",x,
            
         ]
@@ -159,7 +161,10 @@ def generate_launch_description():
             'master/depth/camera_info@sensor_msgs/msg/CameraInfo@ignition.msgs.CameraInfo',
             'master/color/image_raw@sensor_msgs/msg/Image@ignition.msgs.Image',
             'master/depth/color/points@sensor_msgs/msg/PointCloud2@ignition.msgs.PointCloudPacked',
-        ]
+            '--ros-args',
+            '-r','/master/color/image_raw:=videocamera',
+        ],
+        output='screen',
     )
 
     
@@ -171,7 +176,7 @@ def generate_launch_description():
                 namespace=namespace,
                 remappings=[],
                 parameters=[{'use_sim_time': use_sim_time}],
-                arguments=[LaunchConfiguration('x'), '0', '0', '0', '0', '0', 'global', [namespace , '/map']])
+                arguments=[LaunchConfiguration('x'), LaunchConfiguration('y'), '0', '0', '0', '0', 'global', [namespace , '/map']])
 
 
     # gz_ros2_bridge = Node(

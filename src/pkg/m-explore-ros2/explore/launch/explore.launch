@@ -1,0 +1,7 @@
+
+<launch>
+   
+  <include file="$(find-pkg-share explore_lite)/launch/explore.launch.py">
+      <arg name="namespace" value=" master"/>
+  </include>
+</launch>   

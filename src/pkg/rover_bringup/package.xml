@@ -104,6 +104,7 @@
   <exec_depend>rtabmap_util</exec_depend>
   <exec_depend>rtabmap_viz</exec_depend>
   <exec_depend>teb_local_planner</exec_depend>
+  <exec_depend>tf-transformations</exec_depend>
 
   <export>
     <build_type>ament_cmake</build_type>

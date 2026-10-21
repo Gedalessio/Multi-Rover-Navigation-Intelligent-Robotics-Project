@@ -67,6 +67,7 @@ def generate_launch_description():
             
                     ('/odom', ['/',namespace,'/odom']),
                     ('/map', ['/',namespace,'/map']),
+                    ('/map_metadata', ['/',namespace,'/map_metadata']),
                     ('/pose', ['/',namespace,'/pose']),
                     ('/scan',['/',namespace,'/scan']),
                     ('/set_pose',['/',namespace,'/set_pose']),

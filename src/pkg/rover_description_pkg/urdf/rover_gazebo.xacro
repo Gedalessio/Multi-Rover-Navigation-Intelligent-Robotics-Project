@@ -201,13 +201,13 @@
 				</noise>
             </camera>
             <always_on>true</always_on>
-            <update_rate>10</update_rate>
+            <update_rate>5</update_rate>
             <visualize>true</visualize>
         </sensor>
 
 		<sensor name="d435_depth" type="depth_camera">
 			<always_on>1</always_on>
-			<update_rate>10</update_rate>
+			<update_rate>5</update_rate>
 			<visualize>0</visualize>
 			<!-- <topic>${namespace}/depth/image_raw</topic>
             <ignition_frame_id>${namespace}/camera_depth_optical_frame</ignition_frame_id> -->

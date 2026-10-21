@@ -1,0 +1,7 @@
+ros2 launch rover_bringup rover_sim.launch
+
+ros2 run rover_bringup arucoway
+
+ros2 launch aruco_ros single.launch.py
+
+ros2 launch explore_lite explore.launch.py

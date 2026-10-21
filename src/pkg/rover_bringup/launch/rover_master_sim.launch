@@ -1,0 +1,25 @@
+<launch>
+
+  <!-- <include file="$(find-pkg-share rover_gazebo)/launch/rover_gazebo.launch.py"/> -->
+  <include file="$(find-pkg-share rover_gazebo)/launch/multi_rover.launch.py"/>
+ 
+ 
+   <include file="$(find-pkg-share rover_bringup)/launch/slam_sim.launch.py">
+     <arg name="namespace" value="master"/>
+      <arg name="config_file" value="$(find-pkg-share rover_bringup)/config/slam_sim_params_online_master.yaml"/>
+      <arg name="ekf_params_file" value="$(find-pkg-share rover_bringup)/config/localization_ekf_master.yaml"/>
+      
+  </include>
+
+  <include file="$(find-pkg-share rover_bringup)/launch/rviz.launch.py"/>
+    
+   <include file="$(find-pkg-share rover_bringup)/launch/navigation_sim.launch.py">
+    <arg name="namespace" value="master"/>
+    <arg name="params_file" value="$(find-pkg-share rover_bringup)/params/nav2_sim_params_master.yaml" />
+  </include>
+
+
+  
+ 
+
+</launch>

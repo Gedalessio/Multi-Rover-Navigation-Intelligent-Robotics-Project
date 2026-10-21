@@ -110,9 +110,9 @@ controller_server:
           publish_feedback: true
 
           # Robot
-          max_vel_x: 0.8  # 0.1
+          max_vel_x: 0.4  # 0.1
           max_vel_x_backwards: 0.05
-          max_vel_theta: 3.0  # 15deg more or less
+          max_vel_theta: 2.0  # 15deg more or less
           acc_lim_x: 3.0  # was 1.0
           acc_lim_theta: 2.0  # was 0.3
           min_turning_radius: 0.0 #molto importante, determina se durante la rotazione le ruote possono andare in versi opposti
@@ -176,7 +176,7 @@ local_costmap:
       height: 6
       resolution: 0.05
       robot_radius: 0.3
-      plugins: ["obstacle_layer", "inflation_layer","voxel_layer"]
+      plugins: ["voxel_layer", "inflation_layer"] #"gradient_layer",,"obstacle_layer"
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 10.0 
@@ -185,10 +185,6 @@ local_costmap:
       gradient_layer:
         plugin: "costmap_plugin/GradientLayer"
         gradient_radius: 0.6
-      obstacle_layer:
-        plugin: "nav2_costmap_2d::ObstacleLayer"
-        enabled: True
-        observation_sources: scan
       voxel_layer:
         plugin: "nav2_costmap_2d::VoxelLayer"
         enabled: True
@@ -212,11 +208,15 @@ local_costmap:
           raytrace_min_range: 0.0
           obstacle_max_range: 2.5
           obstacle_min_range: 0.0
+      obstacle_layer:
+        plugin: "nav2_costmap_2d::ObstacleLayer"
+        enabled: True
+        observation_sources: scan
       # static_layer:
       #   plugin: "nav2_costmap_2d::StaticLayer"
       #   subscribe_to_updates: true
       #   map_subscribe_transient_local: True
-      always_send_full_costmap: True
+      # always_send_full_costmap: True
       qos_overrides:
         scan:
           reliability: SENSOR_DATA
@@ -233,15 +233,14 @@ global_costmap:
       robot_radius: 0.3
       resolution: 0.05
       track_unknown_space: true
-      plugins: [ "static_layer", "obstacle_layer", "inflation_layer"]      
+      plugins: [ "static_layer", "obstacle_layer", "inflation_layer" ] #   "gradient_layer"  
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
-        enabled: False
         subscribe_to_updates: true
         map_subscribe_transient_local: True
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"
-        enabled: False
+        enabled: True
         footprint_clearing_enabled: True
         observation_sources: scan
         scan:
@@ -257,7 +256,7 @@ global_costmap:
           obstacle_max_range: 2.5
           obstacle_min_range: 0.0
       inflation_layer:
-        enabled: False
+        enabled: True
         plugin: "nav2_costmap_2d::InflationLayer"
         cost_scaling_factor: 10.0 
         inflation_radius: 0.3
@@ -352,8 +351,8 @@ velocity_smoother:
     smoothing_frequency: 10.0
     scale_velocities: False
     feedback: "OPEN_LOOP"
-    max_velocity: [0.8, 0.0, 3.0]
-    min_velocity: [-0.8, 0.0, -3.0]
+    max_velocity: [0.4, 0.1, 2.0] #Modified to make the robot faster
+    min_velocity: [-0.4, 0.1, -2.0]
     max_accel: [2.0, 0.0, 2.0]
     max_decel: [-2.0, 0.0, -2.0]
     odom_topic: "slave/odom"

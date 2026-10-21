@@ -16,7 +16,7 @@ def generate_launch_description():
 
     declare_world_cmd = DeclareLaunchArgument(
         'world',
-        default_value='maze.sdf',
+        default_value='chepalle.sdf',
         description='World file to use in Gazebo')
     
     gz_world_arg = PathJoinSubstitution([
@@ -42,7 +42,8 @@ def generate_launch_description():
             launch_arguments={
                 'namespace': 'slave',
                 'frame_prefix': 'slave/',
-                'x':'-0.2',
+                'x':'-2.0',
+                'y':'5.5',
                 
             }.items()
     )
@@ -59,7 +60,8 @@ def generate_launch_description():
                 'namespace': 'master',
                 'frame_prefix': 'master/',
                 'tf_prefix' :'master',
-                'x':'0.6',
+                'x':'0.0',
+                'y':'0.0',
                 
             }.items()
     )
@@ -89,7 +91,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         
-        master,    
+        master, 
         slave,     
         declare_world_cmd,
         # gz_ros2_bridge,
